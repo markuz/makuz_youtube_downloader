@@ -95,21 +95,4 @@ for url in urls:
             data_url = alternate.url
             break
 
-    print "data_url",data_url
-    data = urllib2.urlopen(data_url)
-    content_length = data.info()['Content-Length']
-    stream = StringIO.StringIO()
-    byte_counter =0
-    while True:
-        data_block = data.read(1024)
-        data_block_size = len(data_block)
-        if not data_block_size:
-            break
-        byte_counter += data_block_size
-        stream.write(data_block)
-        print "saved %d/%s"%(byte_counter, content_length)
-    f = open(entry.media.title.text + ".flv", 'w')
-    f.write(stream.getvalue())
-    f.close()
-    sys.exit()
 
